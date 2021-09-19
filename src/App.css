@@ -1,0 +1,82 @@
+
+
+:root{
+    --black: #6571ac;
+    --white: #fff
+}
+
+.App{
+    background-color: var(--black);
+    
+}
+
+.nav{
+    background-color: var(--white);
+    border-bottom: 1px solid #ccc;
+    height: 50px;
+}
+
+.nav h1{
+    margin: 0 0;
+    font-size: 28px;
+    padding: 5px 10px;
+}
+
+.conteiner{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.background-img{
+    width: 96px;
+    height: 96px;
+    background-color: #ccc;
+    margin: 5px auto;
+    border-radius: 100%;
+}
+
+.cards{
+    background-color: var(--white);
+    width: 150px;
+    height: 200px;
+    margin: 10px 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.cards h1{
+    margin: 0 0;
+    padding: 8px 0;
+}
+
+.types{
+    
+    display: flex;
+    justify-content:center;
+    gap: 10px;
+}
+
+.type{
+    border: 1px solid #ccc;
+    padding: 2px 2px;
+    border-radius: 5px;
+    margin: 10px 0;
+    
+
+}
+
+@media screen and (min-width: 1024px) {
+
+    .nav h1{
+        font-size: 28px;
+        padding: 5px 50px;
+    }
+
+
+    .conteiner{
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+    
+}
