@@ -5,10 +5,10 @@
     --white: #fff
 }
 
-.App{
+/* .App{
     background-color: var(--black);
     
-}
+} */
 
 .nav{
     background-color: var(--white);
@@ -22,10 +22,79 @@
     padding: 5px 10px;
 }
 
-.conteiner{
+/* .conteiner{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+} */
+
+.conteiner{
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    grid-template-areas: "nada bar"
+                         "colum content";
+    column-gap: 10px;
+}
+
+.search-bar{
+    grid-area: bar;
+}
+
+.colum{
+    grid-area: colum;
+}
+
+.grid-fluid{
+    margin: 1rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px, 1fr));
+}
+
+.region, .select-type, .content{
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.region{
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+.select-type{
+    height: 500px;
+    
+}
+
+.name-title{
+    text-align: center;
+    padding: 5px 0;
+}
+
+.contador-orden{
+    display: flex;
+    justify-content:space-between;
+    margin-top: 1rem;
+}
+
+/* contador y orden */
+.contador{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.orden{
+    padding: 5px 10px;
+}
+
+.content{
+    grid-area: content;
+    margin-bottom: 1rem;
+}
+
+.content2{
+    display: flex;
 }
 
 .background-img{
@@ -38,11 +107,13 @@
 
 .cards{
     background-color: var(--white);
+    border: 1px solid #ccc;
     width: 150px;
     height: 200px;
     margin: 10px 10px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 4px;
+    box-shadow: 0px 1px 4px rgb(174, 190, 205);
 }
 
 .cards h1{
