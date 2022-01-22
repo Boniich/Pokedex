@@ -1,28 +1,16 @@
-import React, {Component} from "react";
+import React, { useEffect, useState} from "react";
 import Pokemon from "./Pokemon";
 
-export default class PokeAjax extends Component{
+function PokeAjax(){
 
-    constructor(props){
-        super(props);
-    }
+    const [pokemons, setPokemons] = useState([]);
 
-    state ={
-        pokemons: [],
-    };
-
-    // componentDitMount allow render after component already been in DOM Three.
-
-     componentDidMount(){
-
-        // parameter limit is the max of elements that api will show 
-        // parameter offset means set since which place the api will return result
-        let url = `https://pokeapi.co/api/v2/pokemon/?${this.props.pokemon}`;
+    useEffect(() =>{
+        let url = `https://pokeapi.co/api/v2/pokemon/`;
 
         fetch(url)
         .then(res => res.json())
         .then(json => {
-            // this forEach will read all objects in prop result
             json.results.forEach((el) =>{
                fetch(el.url)
                 .then((res) => res.json())
@@ -39,34 +27,32 @@ export default class PokeAjax extends Component{
                         
                     }
 
-                    let pokemon = {
+                    let pokemonCollection = {
                         id: json.id,
                         name: json.name,
                         avatar:json.sprites.front_default,
                         types: types(),
                       
                    }
-            
-                   let pokemons = [...this.state.pokemons, pokemon];
+                //    console.log(pokemonCollection);
 
-                   this.setState({pokemons});
-
+                   setPokemons((pokemons) => [...pokemons, pokemonCollection]);
                 })
 
-            });
+            })
         })
-    }
+    },[]);
 
-     render(){
-        return(
-            <>
-            {this.state.pokemons.map((el) =>(
-                <Pokemon key={el.id} name={el.name} avatar={el.avatar} types={el.types}   />
-            ))}
-            
-            </>
-        )
-    }
 
+    return(
+        <>
+        {pokemons.map((el)=>(
+            <Pokemon key={el.id} name={el.name} avatar={el.avatar} types={el.types} />
+        ))}
+        </>
+
+    )
 
 }
+
+export default PokeAjax;
