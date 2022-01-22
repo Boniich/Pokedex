@@ -3,6 +3,10 @@ import Pokemon from "./Pokemon";
 
 export default class PokeAjax extends Component{
 
+    constructor(props){
+        super(props);
+    }
+
     state ={
         pokemons: [],
     };
@@ -13,8 +17,7 @@ export default class PokeAjax extends Component{
 
         // parameter limit is the max of elements that api will show 
         // parameter offset means set since which place the api will return result
-
-        let url = "https://pokeapi.co/api/v2/pokemon/?limit=150&offset=0";
+        let url = `https://pokeapi.co/api/v2/pokemon/?${this.props.pokemon}`;
 
         fetch(url)
         .then(res => res.json())
