@@ -1,12 +1,14 @@
 import React, { useEffect, useState} from "react";
 import Pokemon from "./Pokemon";
 
-function PokeAjax(){
+function PokeAjax({pokemon}){
 
     const [pokemons, setPokemons] = useState([]);
 
     useEffect(() =>{
-        let url = `https://pokeapi.co/api/v2/pokemon/`;
+        setPokemons([]);
+        let url = `https://pokeapi.co/api/v2/pokemon/?${pokemon}`;
+        console.log(url);
 
         fetch(url)
         .then(res => res.json())
@@ -41,7 +43,7 @@ function PokeAjax(){
 
             })
         })
-    },[]);
+    },[pokemon]);
 
 
     return(
